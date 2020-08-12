@@ -1,0 +1,6 @@
+INPUT_MESH_FILE = ../surf_3Dmesh.obj
+NUM_LOOP_REF = 0
+REF_ANGLE = 40.0
+R_MAX = .8 
+LIP_CONST = 0.25
+VC_ANGLE = 40.0

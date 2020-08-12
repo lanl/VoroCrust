@@ -1,0 +1,57 @@
+# extract outside boundary
+# make sure layer interfaces are also extracted
+
+read tet_gfm.inp motet                                                          
+resetpts itp
+
+# ------------------------------
+# Extract surface with internal boundaries
+cmo select motet
+extract/surfmesh/1,0,0/motmp/motet
+cmo/copyatt/ motmp motmp/ itetclr / itetclr1
+
+# remove duplicate nodes
+filter 1,0,0
+rmpoint compress
+cmo select motmp; resetpts itp;
+
+# MUST hextotet the quads on sides of mesh
+# hextotet/2/ CMO_SURF motmp
+cmo copy motri motmp
+cmo delete motmp
+
+dump surf_3Dmesh_4mat_att.gmv motri 
+dump surf_3Dmesh_4mat_att.inp motri 
+
+# write version with no attributes for VC
+dump avs surf_3Dmesh_4mat.inp motri 1 1 0 0 
+
+define CMO motri 
+define CMO_SURF motri 
+  cmo setatt motri itetclr 1
+  cmo setatt motri imt 1
+  resetpts itp
+  infile check_surface.mlgi
+  dump ck_3Dmesh_normals.gmv motri 
+  dump ck_3Dmesh_normals.inp motri 
+
+
+# ------------------------------
+# Extract layers for lagrit meshing
+# get top to use as DEM
+
+cmo select motri
+eltset/edel/ itetclr ne 2
+rmpoint element eltset,get,edel
+rmpoint compress
+resetpts itp
+quality
+
+dump surf_3Dmesh_top.gmv motri 
+dump surf_3Dmesh_top.inp motri 
+
+# get layer interfaces 
+
+# get bottom surface
+
+finish                                                                          

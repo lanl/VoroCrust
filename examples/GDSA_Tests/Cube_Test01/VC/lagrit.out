@@ -1,0 +1,38 @@
+ 
+ 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+*               *                                             *                 
+*               *    Program:  LaGriT V3.320   Linux          *                 
+*               *    date_compile: 2019/04/15 Static          *                 
+*               *    Run Time: 2019/May 14  08:04:13          *                 
+*               *    Manual:   http://lagrit.lanl.gov         *                 
+*               *                                             *                 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+ 
+                               -----oOo-----                                    
+             LaGriT V3 LA-CC-15-069  https://github.com/lanl/LaGriT             
+  Copyright 2016. Triad National Security, LLC.  All rights reserved. This      
+  program was produced under U.S. Government contract 89233218CNA000001         
+  for Los Alamos National Laboratory (LANL), which is operated by Triad         
+  National Security, LLC for the U.S. Department of Energy/National Nuclear     
+  Security Administration.  All rights in the program are reserved by Triad     
+  National Security, LLC, and the U.S. Department of Energy/National Nuclear    
+  Security Administration. The Government is granted for itself and others      
+  acting on its behalf a nonexclusive, paid-up, irrevocable worldwide license   
+  in this material to reproduce, prepare derivative works, distribute copies    
+  to the public, perform publicly and display publicly, and to permit others to 
+  do so. This software is open source and available under the BSD-3 License.    
+                               -----oOo-----                                    
+ 
+ 
+Output log file: lagrit.out                                                     
+Command log file: lagrit.log                                                    
+ 
+# write version of mesh with no attributes                                      
+read avs surf_3Dmesh_4mat.inp mos                                               
+ 
+The AVS file, surf_3Dmesh_4mat.inp, does not exist.                             
+WARNING: MO has zero nodes                                                      
+WARNING: NO ACTION                                                              
+finish                                                                          
+LaGriT successfully completed                                                   

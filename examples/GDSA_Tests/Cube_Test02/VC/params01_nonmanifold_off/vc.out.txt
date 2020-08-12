@@ -1,0 +1,85 @@
+VoroCrust::Input Data:
+           * Input Mesh = ../surf_3Dmesh.obj
+           * Number of Loop Refinements = 0
+           * Refinement Smooth Angle Threshold = 40
+           * Maximum Sphere Radius = 0.8
+           * Lipschitz Const = 0.25
+           * VC Smooth Angle Threshold = 40
+           * Input model is a watertight manifold.
+VoroCrust::Reading obj file:
+           * Min. dihedral angle between smooth neighbors = 177 degrees
+           * Number of Input mesh points = 583
+           * Number of Input mesh faces = 1231
+           * Number of Sharp Corners = 64
+           * Number of Sharp Edges = 206
+VoroCrust::Generating Surface Seeds:
+           * Number of Spheres = (64, 338, 1000)
+           * Number of Spheres = (64, 338, 2000)
+           * Number of Spheres = (64, 338, 3000)
+           * Number of Spheres = (64, 338, 3196)
+           * No sliver spheres were detected!
+           * Number of Spheres = (64, 338, 3787)
+           * No sliver spheres were detected!
+           * Number of Spheres = (64, 338, 4000)
+           * Number of Spheres = (64, 338, 4459)
+           * 1 sliver spheres were detected and shrunk!
+           * Number of Spheres = (64, 338, 5000)
+           * Number of Spheres = (64, 338, 6000)
+           * Number of Spheres = (64, 338, 7000)
+           * Number of Spheres = (64, 338, 7611)
+           * 2 sliver spheres were detected and shrunk!
+           * Number of Spheres = (64, 338, 7906)
+           * No sliver spheres were detected!
+           * Number of Spheres = (64, 338, 7960)
+           * No sliver spheres were detected!
+           * Number of Spheres = (64, 338, 7973)
+           * No sliver spheres were detected!
+           * Number of Spheres = (64, 338, 7974)
+           * No sliver spheres were detected!
+           * Correctness of VoroCrust surface has been verified!
+           * Surface Mesh is saved in surface_mesh.obj!
+           * executed in 63.7676 seconds!
+VoroCrust::Generating Volume Seeds:
+           * Number of interior Volume seeds = 207
+           * Number of exterior Volume seeds = 3137
+           * Number of interior Volume seeds = 1207
+           * Number of exterior Volume seeds = 3137
+           * Number of interior Volume seeds = 2207
+           * Number of exterior Volume seeds = 3137
+           * Number of interior Volume seeds = 3207
+           * Number of exterior Volume seeds = 3137
+           * Number of interior Volume seeds = 4207
+           * Number of exterior Volume seeds = 3137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 4137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 5137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 6137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 7137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 8137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 9137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 10137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 11137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 12137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 13137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 14137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 15137
+           * Number of interior Volume seeds = 4379
+           * Number of exterior Volume seeds = 15200
+           * Number of ghost Volume seeds = 91200
+           * executed in 123.243 seconds!
+           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
+
+*** VoroCrust::Mission Accomplished! ***.
+
+

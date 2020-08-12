@@ -1,0 +1,35 @@
+VoroCrust::Input Data:
+           * Input Mesh = ../tri_surf_1_frac_span.obj
+           * Number of Loop Refinements = 0
+           * Refinement Smooth Angle Threshold = 180
+           * Maximum Sphere Radius = 2
+           * Lipschitz Const = 0.25
+           * VC Smooth Angle Threshold = 80
+           * Input model is NOT watertight or NON manifold!
+VoroCrust::Reading obj file:
+           * Number of Input mesh points = 1813
+           * Number of Input mesh faces = 3511
+VoroCrust::Generating Surface Seeds:
+           * Number of Sharp Corners = 12
+           * Number of Sharp Edges = 245
+           * Number of Spheres = (12, 50, 402)
+           * 5 sliver spheres were detected and shrunk!
+           * Number of Spheres = (12, 51, 414)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 1 spheres have shrunk!
+           * Number of Spheres = (12, 51, 414)
+           * No sliver spheres were detected!
+           * Correctness of VoroCrust surface has been verified!
+           * Surface Mesh is saved in surface_mesh.obj!
+           * executed in 1.83367 seconds!
+VoroCrust::Generating Volume Seeds:
+           * Number of interior Volume seeds = 918
+           * Number of exterior Volume seeds = 29
+           * Number of interior Volume seeds = 1632
+           * Number of exterior Volume seeds = 116
+           * Number of ghost Volume seeds = 696
+           * executed in 6.10564 seconds!
+           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
+
+*** VoroCrust::Mission Accomplished! ***.
+

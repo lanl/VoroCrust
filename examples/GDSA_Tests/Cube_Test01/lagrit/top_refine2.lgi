@@ -1,0 +1,86 @@
+# refine top surf for use with stack
+# edge lengths are near 2
+# this is coarse version with edges near 1
+
+define CMO motop
+read  tri_plane.gmv mo_tri
+quality
+
+# refine rivara
+cmo select mo_tri
+
+# this is pretty good
+define / SIZE / 1.5
+#  edgemax  5.107277973E-01  1.252423397E+00
+
+define / SIZE / 2. 
+refine /rivara///edge/ 1 0 0 / SIZE ///inclusive                               
+recon 0
+quality/edge_max/ y
+cmo/printatt/mo_tri/edgemax/ minmax
+dump / tmp2_refine01.gmv / mo_tri
+
+rmpoint/compress
+resetpts/itp
+
+# define / SIZE / 1. 
+# pset/pref/ attribute edgemax/1,0,0/ gt .9 
+# refine /rivara///edge/pset,get,pref/ SIZE ///inclusive                               
+# recon 0
+# quality/edge_max/ y
+# cmo/printatt/mo_tri/edgemax/ minmax
+# dump / tmp2_refine02.gmv / mo_tri
+# rmpoint/compress
+# resetpts/itp
+
+# massage 1. .8 .1 / 1,0,0 
+# dump/ tmp2_refine03.gmv / mo_tri
+
+rmpoint/compress
+resetpts/itp
+
+smooth
+recon 0
+smooth
+recon 0
+smooth
+recon 0
+rmpoint compress
+resetpts itp
+
+quality
+quality edge_max y
+quality edge_min y
+quality aspect y
+cmo printatt mo_tri aratio minmax
+cmo printatt mo_tri edgemax minmax
+cmo printatt mo_tri edgemin minmax
+dump gmv tmp2_smooth.gmv mo_tri
+
+recon 1
+
+quality
+quality edge_max y
+quality aspect y
+cmo printatt mo_tri aratio minmax
+cmo printatt mo_tri edgemax minmax
+
+dump avs tri2_recon.inp mo_tri
+dump gmv tri2_recon.gmv mo_tri
+dump/stor/ tmp / mo_tri
+
+
+
+
+finish
+
+
+# refine by edge length
+cmo copy/ mo2/ mo_tri
+cmo select mo2
+define / SIZE / 1.5
+refine/maxsize///edge/1 0 0/ SIZE
+recon 0
+dump / tmp_refine01_edge.gmv / mo2
+
+finish

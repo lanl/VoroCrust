@@ -1,0 +1,41 @@
+# check mesh and correct material id numbers
+# JS unit 1 = top, mesh = 4
+# JS unit 2 = next, mesh = 2
+# JS unit 3 = next, mesh = 1
+# JS unit 4 = bot, mesh = 3
+
+read avs tet_1324.inp motet                                                     
+quality                                                                         
+
+# correct material numbers
+# get element and point sets
+# assign nodes such that last pset wins
+
+eltset/e1/ itetclr/ eq / 4
+eltset/e2/ itetclr/ eq / 2
+eltset/e3/ itetclr/ eq / 1
+eltset/e4/ itetclr/ eq / 3
+pset/p1/eltset/e1  
+pset/p2/eltset/e2  
+pset/p3/eltset/e3  
+pset/p4/eltset/e4  
+
+# fix current materials to correct ids
+cmo/setatt/motet/itetclr eltset,get,e1 1
+cmo/setatt/motet/itetclr eltset,get,e2 2
+cmo/setatt/motet/itetclr eltset,get,e3 3
+cmo/setatt/motet/itetclr eltset,get,e4 4
+
+# assign node imt based on element ids
+# last id will assign top and bottom of that layer
+cmo/setatt/motet/imt pset,get,p4 4
+cmo/setatt/motet/imt pset,get,p3 3
+cmo/setatt/motet/imt pset,get,p2 2
+cmo/setatt/motet/imt pset,get,p1 1
+
+resetpts/itp
+
+dump gmv tet_materials.gmv motet                                                     
+dump avs tet_materials.inp motet                                                     
+
+finish                                                                          

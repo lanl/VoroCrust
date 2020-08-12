@@ -1,0 +1,103 @@
+# stack surfaces and write fehm files
+# tri_recon.inp has edges near .3
+# tri2_recon.inp has edges between 1 and 2 
+
+read  tri2_recon.inp motop
+cmo copyatt/ motop motop/ zic z_elev
+
+dump/avs/ surf_top.inp/ motop
+cmo copy motmp motop
+
+cmo/setatt/motmp/zic/ -2.9661
+dump/avs/ surf_unit2.inp/ motmp
+
+cmo/setatt/motmp/zic/ -5.8257 
+dump/avs/ surf_unit3.inp/ motmp
+
+cmo/setatt/motmp/zic/ -10. 
+dump/avs/ surf_unit4.inp/ motmp
+
+cmo/setatt/motmp/zic/ -12.0766 
+dump/avs/ surf_bot.inp/ motmp
+
+# stack
+cmo/create/mostack
+stack/layers/avs/ &
+  surf_bot.inp   4   &
+  surf_unit4.inp 3 3 &
+  surf_unit3.inp 2 6 &
+  surf_unit2.inp 1 4 &
+  surf_top.inp   1 4 
+
+dump gmv stack.gmv mostack
+stack/fill/mopri/ mostack
+rmpoint compress
+resetpts itp
+
+quality
+quality edge_max y
+quality edge_min y
+cmo printatt mopri edgemax minmax
+cmo printatt mopri edgemin minmax
+dump/ prism.inp / mopri
+dump/ prism.gmv / mopri
+
+### connect into Delaunay tet mesh ###
+cmo/create/motet
+copypts/ motet / mopri
+cmo/setatt/motet / imt 1
+filter/1,0,0
+rmpoint compress
+resetpts itp
+
+connect
+cmo/setatt/motet/ itetclr 1
+resetpts itp
+quality
+cmo/addatt/motet/vor_volume/ vorvol
+dump gmv tet_connect.gmv motet
+
+### assign materials ###
+read tet_gfm.inp mosrc
+interpolate/map/motet itetclr/1,0,0/mosrc itetclr
+
+cmo/select/motet
+
+eltset/e1/ itetclr/ eq / 1
+eltset/e2/ itetclr/ eq / 2
+eltset/e3/ itetclr/ eq / 3
+eltset/e4/ itetclr/ eq / 4
+pset/p1/eltset/e1  
+pset/p2/eltset/e2  
+pset/p3/eltset/e3  
+pset/p4/eltset/e4  
+
+# assign node imt based on element ids
+# last id will assign top and bottom of that layer
+cmo/setatt/motet/imt pset,get,p4 4
+cmo/setatt/motet/imt pset,get,p3 3
+cmo/setatt/motet/imt pset,get,p2 2
+cmo/setatt/motet/imt pset,get,p1 1
+resetpts itp
+
+dump gmv tet_conn_4mat.gmv motet                                                     
+dump avs tet_conn_4mat.inp motet   
+
+### write fehm files ###
+
+cmo/setatt/motet itetclr 1
+cmo/select/motet                                                               
+resetpts/parent                                                                 
+rmpoint compress                                                                
+filter/1,0,0         
+
+
+dump/fehm/tet/motet ascii   
+dump gmv tet_fehm.gmv motet            
+cmo printatt motet -all- minmax
+quality
+
+
+
+
+finish

@@ -1,0 +1,10 @@
+read avs tet_CompartmentId.inp mo                                               
+cmo copy motmp mo                                                               
+math/mult/motmp zic 1,0,0 motmp zic/-1.                                         
+cmo printatt motmp -xyz- minmax                                                 
+dump gmv tet_Zminus.gmv motmp                                                   
+dump avs tet_Zminus.inp motmp                                                   
+quality                                                                         
+geniee                                                                          
+quality                                                                         
+finish                                                                          

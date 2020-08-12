@@ -1,0 +1,41 @@
+VoroCrust::Input Data:
+           * Input Mesh = ../surf_uplift_shell_3x.obj
+           * Number of Loop Refinements = 0
+           * Refinement Smooth Angle Threshold = 180
+           * Maximum Sphere Radius = 10000
+           * Lipschitz Const = 0.25
+           * VC Smooth Angle Threshold = 25
+           * Input model is a watertight manifold.
+VoroCrust::Reading obj file:
+           * Min. dihedral angle between smooth neighbors = 173 degrees
+           * Number of Input mesh points = 5298
+           * Number of Input mesh faces = 10592
+           * Number of Sharp Corners = 8
+           * Number of Sharp Edges = 460
+VoroCrust::Generating Surface Seeds:
+           * Number of Spheres = (8, 58, 214)
+           * 1 sliver spheres were detected and shrunk!
+           * Number of Spheres = (8, 58, 399)
+           * 5 sliver spheres were detected and shrunk!
+           * Number of Spheres = (8, 58, 414)
+           * 2 sliver spheres were detected and shrunk!
+           * Number of Spheres = (8, 58, 414)
+           * No sliver spheres were detected!
+           * Number of Spheres = (8, 58, 414)
+           * No sliver spheres were detected!
+           * Correctness of VoroCrust surface has been verified!
+           * Surface Mesh is saved in surface_mesh.obj!
+           * executed in 6.96486 seconds!
+VoroCrust::Generating Volume Seeds:
+           * Number of interior Volume seeds = 678
+           * Number of exterior Volume seeds = 14
+           * Number of interior Volume seeds = 1678
+           * Number of exterior Volume seeds = 14
+           * Number of interior Volume seeds = 1843
+           * Number of exterior Volume seeds = 150
+           * Number of ghost Volume seeds = 900
+           * executed in 3.27669 seconds!
+           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
+
+*** VoroCrust::Mission Accomplished! ***.
+

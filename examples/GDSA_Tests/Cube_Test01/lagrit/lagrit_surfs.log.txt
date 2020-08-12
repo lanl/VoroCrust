@@ -1,0 +1,41 @@
+read tet_gfm.inp motet                                                          
+resetpts itp                                                                    
+cmo select motet                                                                
+extract/surfmesh/1,0,0/motmp/motet                                              
+cmo/copyatt/motmp motmp/itetclr/itetclr1                                        
+cmo select motmp                                                                
+resetpts itp                                                                    
+dump surf_3Dmesh_4mat.gmv motmp                                                 
+dump surf_3Dmesh_4mat.inp motmp                                                 
+cmo copy motri motmp                                                            
+cmo delete motmp                                                                
+define CMO motri                                                                
+define CMO_SURF motri                                                           
+cmo setatt motri itetclr 1                                                      
+cmo setatt motri imt 1                                                          
+resetpts itp                                                                    
+infile check_surface.mlgi                                                       
+cmo select CMO_SURF                                                             
+cmo setatt CMO_SURF itetclr 1                                                   
+cmo setatt CMO_SURF imt 1                                                       
+resetpts itp                                                                    
+filter 1,0,0                                                                    
+rmpoint compress                                                                
+resetpts itp                                                                    
+quality                                                                         
+boundary_components                                                             
+settets/normal                                                                  
+dump gmv ck_normals.gmv CMO_SURF                                                
+geniee CMO_SURF 2dnormal 0                                                      
+finish                                                                          
+dump surf_3Dmesh_normals.gmv motri                                              
+dump surf_3Dmesh_normals.inp motri                                              
+cmo select motri                                                                
+eltset/edel/itetclr ne 2                                                        
+rmpoint element eltset,get,edel                                                 
+rmpoint compress                                                                
+resetpts itp                                                                    
+quality                                                                         
+dump surf_3Dmesh_top.gmv motri                                                  
+dump surf_3Dmesh_top.inp motri                                                  
+finish                                                                          

@@ -1,0 +1,6 @@
+INPUT_MESH_FILE = ../surf_uplift_shell_6x.obj
+NUM_LOOP_REF = 0
+REF_ANGLE = 180.0
+R_MAX = 10000.0
+LIP_CONST = 0.25
+VC_ANGLE = 25.0

@@ -1,0 +1,7 @@
+INPUT_MESH_FILE = ../surfmesh_gfm.obj
+INPUT_MESH_FILE = ../surfmesh_gfm.obj
+REF_ANGLE = 180.0
+R_MAX = 1. 
+LIP_CONST = 0.25
+VC_ANGLE = 20.0
+NON_MANIFOLD

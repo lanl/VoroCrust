@@ -1,0 +1,72 @@
+VoroCrust::Input Data:
+           * Input Mesh = ../tri_surf_4_frac_merge_box.obj
+           * Number of Loop Refinements = 0
+           * Refinement Smooth Angle Threshold = 180
+           * Maximum Sphere Radius = 2
+           * Lipschitz Const = 0.25
+           * VC Smooth Angle Threshold = 80
+           * Input model is NOT watertight or NON manifold!
+VoroCrust::Reading obj file:
+           * Number of Input mesh points = 4334
+           * Number of Input mesh faces = 8497
+VoroCrust::Generating Surface Seeds:
+           * Number of Sharp Corners = 30
+           * Number of Sharp Edges = 1047
+           * Number of Spheres = (30, 174, 1000)
+           * Number of Spheres = (30, 174, 1388)
+           * 7 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 175, 1447)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 35 spheres have shrunk!
+           * Number of Spheres = (30, 207, 1805)
+           * 1 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 207, 1851)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 53 spheres have shrunk!
+           * Number of Spheres = (30, 264, 1991)
+           * Number of Spheres = (30, 264, 2406)
+           * 5 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 264, 2555)
+           * 3 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 266, 2597)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 113 spheres have shrunk!
+           * Number of Spheres = (30, 380, 2980)
+           * Number of Spheres = (30, 380, 3503)
+           * 3 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 382, 3781)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 224 spheres have shrunk!
+           * Number of Spheres = (30, 612, 3968)
+           * Number of Spheres = (30, 612, 4968)
+           * Number of Spheres = (30, 612, 5702)
+           * 17 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 622, 5940)
+           * Number of Spheres = (30, 622, 6280)
+           * 5 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 623, 6429)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 422 spheres have shrunk!
+           * Number of Spheres = (30, 1049, 6931)
+           * Number of Spheres = (30, 1049, 7931)
+           * Number of Spheres = (30, 1049, 8931)
+           * Number of Spheres = (30, 1049, 9550)
+           * 8 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 1052, 9916)
+           * Number of Spheres = (30, 1052, 10296)
+           * 1 sliver spheres were detected and shrunk!
+           * Number of Spheres = (30, 1054, 10482)
+           * No sliver spheres were detected!
+           * Number of Spheres = (30, 1054, 10541)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 833 spheres have shrunk!
+           * Number of Spheres = (30, 1891, 10904)
+           * Number of Spheres = (30, 1891, 11904)
+           * Number of Spheres = (30, 1891, 12904)
+           * Number of Spheres = (30, 1891, 13904)
+           * Number of Spheres = (30, 1891, 14904)
+           * Number of Spheres = (30, 1891, 15904)
+           * Number of Spheres = (30, 1891, 16240)
+
+Mission NOT FINISHED
+

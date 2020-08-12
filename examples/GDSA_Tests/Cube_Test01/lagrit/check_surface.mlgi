@@ -1,0 +1,42 @@
+
+#---- CHECK surface --------------####
+
+cmo select CMO_SURF
+cmo setatt CMO_SURF itetclr 1
+cmo setatt CMO_SURF imt 1
+resetpts itp
+
+# CHECK for 0 duplicate points
+filter 1,0,0
+  rmpoint compress
+  resetpts itp
+
+# CHECK all areas are positive
+quality
+
+# CHECK for 0 boundary shell, 1 boundary open surface
+#           0  different exterior boundary components                   
+boundary_components                             
+
+# CHECK face orientations are all in outward directions
+# visual inspection of materials should result with 
+# 1=down facing 2=up facing, 3=right, 4=back, 5=left, 6=front
+settets/normal
+dump gmv ck_normals.gmv CMO_SURF
+
+# CHECK topology, should have 0 inconsistent elements
+# Note this checks that all are inward or outward in same direction
+# Note that internal boundaries will result in 3 elems sharing an edge
+# For instance
+#  geniee: mesh has 32  jtet loops, max cycle length=  3 
+#  means there are  32 edges with more than 2 faces sharing an edge
+#  and there is no single solution for checking or fixing this
+#
+#  Reference Element                   1                                          
+#  Inconsistent Elements               0                                          
+# ---NO ACTION, Only Check---               
+#
+geniee CMO_SURF 2dnormal 0 
+
+# END SURFACE CHECK
+finish

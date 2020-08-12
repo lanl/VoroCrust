@@ -1,0 +1,17 @@
+cmo DELATT CMO loopid                                                         
+cmo DELATT CMO ctype                                                          
+cmo DELATT CMO cid                                                            
+cmo DELATT CMO ekey      
+cmo DELATT CMO nkey      
+# cmo DELATT CMO itetclr0
+cmo DELATT CMO itetclr1
+cmo DELATT CMO idnode0
+cmo DELATT CMO idelem0
+cmo DELATT CMO idelem1
+cmo DELATT CMO facecol
+cmo DELATT CMO idface0
+cmo DELATT CMO idface1
+cmo DELATT CMO ncon50
+cmo DELATT CMO nconbnd
+cmo DELATT CMO icontab
+finish

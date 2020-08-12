@@ -1,0 +1,11 @@
+
+lagrit < get_external_surfs.lgi 
+ cp lagrit.out lagrit_surfs.out.txt
+ cp logrit.log lagrit_surfs.log.txt
+
+lagrit < top_refine.lgi
+  cp lagrit.out lagrit_refine.out.txt
+  cp lagrit.log lagrit_refine.log.txt
+
+
+

@@ -1,0 +1,47 @@
+VoroCrust::Input Data:
+           * Input Mesh = ../surf_uplift_shell_1x.obj
+           * Number of Loop Refinements = 0
+           * Refinement Smooth Angle Threshold = 180
+           * Maximum Sphere Radius = 10000
+           * Lipschitz Const = 0.25
+           * VC Smooth Angle Threshold = 25
+           * Input model is a watertight manifold.
+VoroCrust::Reading obj file:
+           * Min. dihedral angle between smooth neighbors = 177 degrees
+           * Number of Input mesh points = 5298
+           * Number of Input mesh faces = 10592
+           * Number of Sharp Corners = 8
+           * Number of Sharp Edges = 460
+VoroCrust::Generating Surface Seeds:
+           * Number of Spheres = (8, 154, 575)
+           * 2 sliver spheres were detected and shrunk!
+           * Number of Spheres = (8, 154, 770)
+           * 2 sliver spheres were detected and shrunk!
+           * Number of Spheres = (8, 154, 1000)
+           * Number of Spheres = (8, 154, 1240)
+           * 5 sliver spheres were detected and shrunk!
+           * Number of Spheres = (8, 154, 1274)
+           * 1 sliver spheres were detected and shrunk!
+           * Number of Spheres = (8, 154, 1276)
+           * No sliver spheres were detected!
+           * Number of Spheres = (8, 154, 1276)
+           * No sliver spheres were detected!
+           * Correctness of VoroCrust surface has been verified!
+           * Surface Mesh is saved in surface_mesh.obj!
+           * executed in 11.7627 seconds!
+VoroCrust::Generating Volume Seeds:
+           * Number of interior Volume seeds = 1601
+           * Number of exterior Volume seeds = 19
+           * Number of interior Volume seeds = 2601
+           * Number of exterior Volume seeds = 19
+           * Number of interior Volume seeds = 3601
+           * Number of exterior Volume seeds = 19
+           * Number of interior Volume seeds = 4388
+           * Number of exterior Volume seeds = 206
+           * Number of ghost Volume seeds = 1236
+           * executed in 9.48617 seconds!
+           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
+
+*** VoroCrust::Mission Accomplished! ***.
+
+

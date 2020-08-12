@@ -1,0 +1,52 @@
+rust::Input Data:
+           * Input Mesh = ../surf_cube_buffered.obj
+           * Number of Loop Refinements = 0
+           * Refinement Smooth Angle Threshold = 180
+           * Maximum Sphere Radius = 2
+           * Lipschitz Const = 0.2
+           * VC Smooth Angle Threshold = 85
+           * Input model is NOT watertight or NON manifold!
+VoroCrust::Reading obj file:
+           * Number of Input mesh points = 20
+           * Number of Input mesh faces = 34
+VoroCrust::Generating Surface Seeds:
+           * Number of Sharp Corners = 20
+           * Number of Sharp Edges = 40
+           * Number of Spheres = (20, 74, 644)
+           * 20 sliver spheres were detected and shrunk!
+           * Number of Spheres = (20, 74, 670)
+           * 1 sliver spheres were detected and shrunk!
+           * Number of Spheres = (20, 74, 671)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 12 spheres have shrunk!
+           * Number of Spheres = (20, 83, 855)
+           * 29 sliver spheres were detected and shrunk!
+           * Number of Spheres = (20, 95, 942)
+           * 9 sliver spheres were detected and shrunk!
+           * Number of Spheres = (20, 101, 970)
+           * Number of Spheres = (20, 101, 984)
+           * 1 sliver spheres were detected and shrunk!
+           * Number of Spheres = (20, 102, 988)
+           * 2 sliver spheres were detected and shrunk!
+           * Number of Spheres = (20, 103, 995)
+           * No sliver spheres were detected!
+           * VoroCrust surface is not watertight, 4 spheres have shrunk!
+           * Number of Spheres = (20, 104, 1006)
+           * No sliver spheres were detected!
+           * Correctness of VoroCrust surface has been verified!
+           * Surface Mesh is saved in surface_mesh.obj!
+           * executed in 2.77324 seconds!
+VoroCrust::Generating Volume Seeds:
+           * Number of interior Volume seeds = 18
+           * Number of exterior Volume seeds = 1754
+           * Number of interior Volume seeds = 363
+           * Number of exterior Volume seeds = 2754
+           * Number of interior Volume seeds = 363
+           * Number of exterior Volume seeds = 3666
+           * Number of ghost Volume seeds = 21996
+           * executed in 11.3731 seconds!
+           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
+
+*** VoroCrust::Mission Accomplished! ***.
+
+

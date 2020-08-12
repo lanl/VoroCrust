@@ -1,0 +1,274 @@
+gmv_attributes2
+
+filename /project/meshing/GEO_Integration/EXAMPLES/Cube_Test01/lagrit/tmp2_refine01.gmv
+
+matrgba 16 0.000000e+00 9.411765e-02 1.000000e+00 1.000000e+00 0.000000e+00 9.098039e-01 1.000000e+00 1.000000e+00 2.627451e-01 8.352941e-01 2.666667e-01 1.000000e+00 6.745098e-01 5.529412e-01 3.686275e-01 1.000000e+00 
+
+active_mat 0 mat00001
+active_mat 2 vor00001
+active_mat 3 med00001
+
+angles -9.000000e+01 9.000000e+01 0.000000e+00
+
+magnify 1.122018e+00
+
+range 2.046238e+01 2.043439e+01 0.000000e+00
+
+span 2.891839e+01
+
+aspect 1.149497e+00
+
+pan 0.000000e+00 0.000000e+00
+
+translate -9.999944e+00 -1.001382e+01 -0.000000e+00
+
+plotbox_mins -2.312470e-01 -2.033751e-01 0.000000e+00
+
+plotbox_maxs 2.023113e+01 2.023101e+01 0.000000e+00
+
+explodefact 0.000000e+00 0.000000e+00 0.000000e+00
+
+velscale 1.000000e+00
+
+velarrowsize 1.000000e+00
+
+axisflag 0
+
+nodesflag 0
+
+linesflag 0
+
+polysflag 0
+
+cellsflag 0
+
+celledgesflag 1
+
+cellhiddenedgesflag 0
+
+cellexpflag -1
+
+timeflag 0
+
+cycleflag 0
+
+distscaleflag 0
+
+textureflag 1
+
+tracerflag 0
+
+nodefieldactive MATERIAL  
+
+cellfieldactive MATERIAL  
+
+backgroundcolor 255 255 255
+
+light  0.000000e+00 4.000000e-01
+
+xscale 1.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 
+
+yscale 1.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 
+
+zscale 1.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 
+
+scaleaxis 1.000000e+00 1.000000e+00 1.000000e+00
+
+nodefield_limits 15
+     ^imt1    ^ 1.000000e+00 1.000010e+00
+     ^itp1    ^ 0.000000e+00 1.000000e+01
+     ^icr1    ^ 0.000000e+00 1.000000e-05
+     ^isn1    ^ 0.000000e+00 1.000000e-05
+     ^z_elev  ^ 0.000000e+00 1.000000e-05
+     ^edgemax ^ 8.874226e-01 1.414214e+00
+     ^Vect Mag^ 0.000000e+00 1.000000e-05
+     FldCalc1 0.000000e+00 1.000000e-05
+     FldCalc2 0.000000e+00 1.000000e-05
+     FldCalc3 0.000000e+00 1.000000e-05
+     FldCalc4 0.000000e+00 1.000000e-05
+     FldCalc5 0.000000e+00 1.000000e-05
+     X-Coords 0.000000e+00 2.000000e+01
+     Y-Coords 0.000000e+00 2.000000e+01
+     Z-Coords 0.000000e+00 1.000000e-05
+nodefield_nice_limits 15
+     ^imt1    ^ 1.000000e+00 1.000010e+00
+     ^itp1    ^ 0.000000e+00 1.000000e+01
+     ^icr1    ^ 0.000000e+00 1.000000e-05
+     ^isn1    ^ 0.000000e+00 1.000000e-05
+     ^z_elev  ^ 0.000000e+00 1.000000e-05
+     ^edgemax ^ 8.874226e-01 1.414214e+00
+     ^Vect Mag^ 0.000000e+00 1.000000e-05
+     FldCalc1 0.000000e+00 1.000000e-05
+     FldCalc2 0.000000e+00 1.000000e-05
+     FldCalc3 0.000000e+00 1.000000e-05
+     FldCalc4 0.000000e+00 1.000000e-05
+     FldCalc5 0.000000e+00 1.000000e-05
+     X-Coords 0.000000e+00 2.000000e+01
+     Y-Coords 0.000000e+00 2.000000e+01
+     Z-Coords 0.000000e+00 1.000000e-05
+nodefield_lim_flags 15  
+     ^imt1    ^ 0 0 0
+     ^itp1    ^ 0 0 0
+     ^icr1    ^ 0 0 0
+     ^isn1    ^ 0 0 0
+     ^z_elev  ^ 0 0 0
+     ^edgemax ^ 0 0 0
+     ^Vect Mag^ 0 0 0
+     FldCalc1 0 0 0
+     FldCalc2 0 0 0
+     FldCalc3 0 0 0
+     FldCalc4 0 0 0
+     FldCalc5 0 0 0
+     X-Coords 0 0 0
+     Y-Coords 0 0 0
+     Z-Coords 0 0 0
+ 
+cellfield_limits 6
+     ^edgemax ^ 8.415740e-01 1.414214e+00
+     FldCalc1 1.902747e-01 5.963288e-01
+     FldCalc2 0.000000e+00 1.000000e-05
+     FldCalc3 8.000000e+00 5.013000e+03
+     FldCalc4 1.000000e+00 7.000000e+00
+     FldCalc5 0.000000e+00 4.000000e+00
+ 
+cellfield_nice_limits 6
+     ^edgemax ^ 8.415740e-01 1.414214e+00
+     FldCalc1 1.902747e-01 5.963288e-01
+     FldCalc2 0.000000e+00 1.000000e-05
+     FldCalc3 8.000000e+00 5.013000e+03
+     FldCalc4 1.000000e+00 7.000000e+00
+     FldCalc5 0.000000e+00 4.000000e+00
+cellfield_lim_flags 6  
+     ^edgemax ^ 0 0 0
+     FldCalc1 0 0 0
+     FldCalc2 0 0 0
+     FldCalc3 0 0 0
+     FldCalc4 0 0 0
+     FldCalc5 0 0 0
+ 
+plotbox_mins_prev -2.312470e-01 -2.033751e-01 0.000000e+00
+
+plotbox_maxs_prev 2.023113e+01 2.023101e+01 0.000000e+00
+
+cliponbox 0
+
+nrefl_loops 1
+
+reflect 0 0 0
+
+clipvalue 0.000000e+00 1.000000e+00
+
+polysubset_mins -2.312470e-01 -2.033751e-01 0.000000e+00
+
+polysubset_maxs 2.023113e+01 2.023101e+01 0.000000e+00
+
+subset_mins -2.312470e-01 -2.033751e-01 0.000000e+00
+
+subset_maxs 2.023113e+01 2.023101e+01 0.000000e+00
+
+mat_order 3 0 2 3 
+
+nodeselflag Material ALL
+nodeselflag Flag ^imt1    ^ ALL
+
+nodeandorflag 2 0 0 
+
+cellselflag Material ALL
+
+cellandorflag 1 0 
+
+colorbarflag 1
+
+colorbarpref 0
+
+boundingboxflag 0
+
+boundingbox_mins -3.063544e-02 -3.037939e-03 0.000000e+00
+
+boundingbox_maxs 2.003052e+01 2.003067e+01 0.000000e+00
+
+boundingbox_mins_prev -3.063544e-02 -3.037939e-03 0.000000e+00
+
+boundingbox_maxs_prev 2.003052e+01 2.003067e+01 0.000000e+00
+
+viewflag 0
+
+flypos 0.000000e+00 0.000000e+00 0.000000e+00 
+
+cellcontflag 0
+
+cliponcellsel 0
+
+vectfld_ NONE NONE NONE
+
+maxspeed 0.000000e+00
+
+vectorflag 0
+
+vectorarrow 1
+
+vectorlog 0
+
+cvectfld_ NONE NONE NONE
+
+cmaxspeed 0.000000e+00
+
+cvectorflag 0
+
+titleflag 0
+
+nodeselmat_on 0
+
+cellselmat_on 0
+
+bboxcoordflag 0
+
+nodenumflag 0
+
+cellnumflag 0
+
+pnt_size 6 0
+
+line_size 1 0
+
+node0matflag 0
+
+cell0matflag 0
+
+tracehistflag 0
+
+tracehiststop 0
+
+tracehiststride 1
+
+tracehistpoints 1
+
+cellshadeflag 0
+
+fieldcolortype 0
+
+nset_contours 3
+
+facerefineflag 0
+
+cellnormflag 0
+
+cellmedianedgeflag 0
+
+cellnodenumflag 0
+
+cellfacenumflag 0
+
+polystiplflag 0
+
+drawunselnodes 0
+
+drawunselcells 0
+
+distscale_x 153
+distscale_y 32
+orient_axisflag 1
+orient_axis_x 57
+orient_axis_y 979
+end_attributes
+

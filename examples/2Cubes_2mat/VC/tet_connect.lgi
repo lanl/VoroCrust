@@ -1,0 +1,58 @@
+# connect interior and exterior seeds
+# assign materials from original tet mesh
+
+read tet_model.inp mosrc
+read avs Interior_seeds.inp mo1                                                 
+read avs Exterior_seeds.inp mo2                                                 
+
+cmo create cmotet                                                               
+cmo setatt mo1 imt 1                                                            
+cmo setatt mo2 imt 2                                                            
+addmesh merge mo1 mo1 mo2                                                       
+copypts cmotet mo1                                                              
+filter 1,0,0                                                                    
+rmpoint compress                                                                
+dump avs pts_for_connect.inp mo1 
+dump gmv pts_for_connect.gmv mo1 
+
+# connect
+cmo select cmotet
+cmo setatt cmotet imt 1                                                         
+connect                                                                         
+resetpts itp                                                                    
+
+# color materials
+interpolate/map/cmotet itetclr/1,0,0/ mosrc itetclr
+interpolate/map/cmotet imt/1,0,0/ mosrc itetclr
+
+cmo/select/cmotet
+resetpts itp
+cmo printatt cmotet imt minmax                                                  
+cmo printatt cmotet itetclr minmax                                                  
+
+cmo/addatt/cmotet/voronoi_volume/vor_vol
+cmo/addatt/cmotet/volume/tet_vol
+
+# sort based on element itetclr number and median location
+createpts / median
+sort/cmotet/index/ascending/ikey/ itetclr xmed ymed zmed
+reorder/cmotet / ikey
+
+dump avs vor_tet.inp cmotet                                                     
+dump gmv vor_tet.gmv cmotet                                                     
+dump avs vor_tet.dat cmotet cmotet 0 0 1 0                                                     
+cmo/printatt/cmotet/ -all- minmax
+
+# sum the vorornoi volumes in each region
+
+pset/p1/attribute imt/1,0,0/ eq 1
+pset/p2/attribute imt/1,0,0/ eq 2
+pset/p3/attribute imt/1,0,0/ eq 3
+
+math/sum/cmotet/sum_all/1,0,0/ cmotet vor_vol
+math/sum/cmotet/sum_r1/pset,get,p1/ cmotet vor_vol
+math/sum/cmotet/sum_r2/pset,get,p2/ cmotet vor_vol
+math/sum/cmotet/sum_r3/pset,get,p3/ cmotet vor_vol
+cmo/printatt/cmotet/ -all- minmax
+
+finish                                                                          

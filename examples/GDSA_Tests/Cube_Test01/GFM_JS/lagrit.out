@@ -1,0 +1,139 @@
+ 
+ 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+*               *                                             *                 
+*               *    Program:  LaGriT V3.320   Linux          *                 
+*               *    date_compile: 2019/04/15 Static          *                 
+*               *    Run Time: 2019/May 13  09:53:20          *                 
+*               *    Manual:   http://lagrit.lanl.gov         *                 
+*               *                                             *                 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+ 
+                               -----oOo-----                                    
+             LaGriT V3 LA-CC-15-069  https://github.com/lanl/LaGriT             
+  Copyright 2016. Triad National Security, LLC.  All rights reserved. This      
+  program was produced under U.S. Government contract 89233218CNA000001         
+  for Los Alamos National Laboratory (LANL), which is operated by Triad         
+  National Security, LLC for the U.S. Department of Energy/National Nuclear     
+  Security Administration.  All rights in the program are reserved by Triad     
+  National Security, LLC, and the U.S. Department of Energy/National Nuclear    
+  Security Administration. The Government is granted for itself and others      
+  acting on its behalf a nonexclusive, paid-up, irrevocable worldwide license   
+  in this material to reproduce, prepare derivative works, distribute copies    
+  to the public, perform publicly and display publicly, and to permit others to 
+  do so. This software is open source and available under the BSD-3 License.    
+                               -----oOo-----                                    
+ 
+ 
+Output log file: lagrit.out                                                     
+Command log file: lagrit.log                                                    
+ 
+# check mesh and correct material id numbers                                    
+# JS unit 1 = top, mesh = 4                                                     
+# JS unit 2 = next, mesh = 2                                                    
+# JS unit 3 = next, mesh = 1                                                    
+# JS unit 4 = bot, mesh = 3                                                     
+read avs tet_1324.inp motet                                                     
+geniee                                                                          
+finish                                                                          
+cmo/status/brief                                                                
+ 
+The current-mesh-object(CMO) is: motet                                          
+ 
+  1 Mesh Object name: motet                                                     
+    number of nodes =          1110        number of elements =         5031    
+    dimensions geometry =         3        element type =                tet    
+    dimensions topology =         3        4 nodes      4 faces      6 edges    
+    boundary flag =        16000000        status =                   active    
+ 
+ 
+finish                                                                          
+quality                                                                         
+ 
+epsilonl, epsilonaspect:   6.8288888E-12  3.1845651E-34                         
+--------------------------------------------                                    
+elements with aspect ratio < .01:                    0                          
+elements with aspect ratio b/w .01 and .02:          0                          
+elements with aspect ratio b/w .02 and .05:          0                          
+elements with aspect ratio b/w .05 and .1 :          0                          
+elements with aspect ratio b/w .1  and .2 :          0                          
+elements with aspect ratio b/w .2  and .5 :          0                          
+elements with aspect ratio b/w .5  and 1. :       5031                          
+min aspect ratio =  0.5271E+00  max aspect ratio =  0.9999E+00                  
+ 
+epsilonvol:   1.0726176E-09                                                     
+---------------------------------------                                         
+element volumes b/w  0.3602E+00 and  0.5303E+00:        30                      
+element volumes b/w  0.5303E+00 and  0.7807E+00:      1077                      
+element volumes b/w  0.7807E+00 and  0.1149E+01:      2833                      
+element volumes b/w  0.1149E+01 and  0.1692E+01:      1068                      
+element volumes b/w  0.1692E+01 and  0.2491E+01:        23                      
+min volume =   3.6020878E-01  max volume =   2.4908605E+00                      
+-----------------------------------------------------------                     
+      5031 total elements evaluated.                                            
+ 
+# correct material numbers                                                      
+# get element and point sets                                                    
+# assign nodes such that last pset wins                                         
+eltset/e1/itetclr/eq/4                                                          
+ 
+ THE ELTSET e1                               HAS       1323 ELEMENTS            
+eltset/e2/itetclr/eq/2                                                          
+ 
+ THE ELTSET e2                               HAS       1301 ELEMENTS            
+eltset/e3/itetclr/eq/1                                                          
+ 
+ THE ELTSET e3                               HAS       1685 ELEMENTS            
+eltset/e4/itetclr/eq/3                                                          
+ 
+ THE ELTSET e4                               HAS        722 ELEMENTS            
+pset/p1/eltset/e1                                                               
+ 
+ THE PSET  p1  HAS        391 POINTS                                            
+pset/p2/eltset/e2                                                               
+ 
+ THE PSET  p2  HAS        387 POINTS                                            
+pset/p3/eltset/e3                                                               
+ 
+ THE PSET  p3  HAS        449 POINTS                                            
+pset/p4/eltset/e4                                                               
+ 
+ THE PSET  p4  HAS        270 POINTS                                            
+# fix current materials to correct ids                                          
+cmo/setatt/motet/itetclr eltset,get,e1 1                                        
+      1323 values reset for attribute itetclr                                   
+ 
+cmo/setatt/motet/itetclr eltset,get,e2 2                                        
+      1301 values reset for attribute itetclr                                   
+ 
+cmo/setatt/motet/itetclr eltset,get,e3 3                                        
+      1685 values reset for attribute itetclr                                   
+ 
+cmo/setatt/motet/itetclr eltset,get,e4 4                                        
+       722 values reset for attribute itetclr                                   
+ 
+# assign node imt based on element ids                                          
+# last id will assign top and bottom of that layer                              
+cmo/setatt/motet/imt pset,get,p4 4                                              
+       270 values reset for attribute imt1                                      
+ 
+cmo/setatt/motet/imt pset,get,p3 3                                              
+       449 values reset for attribute imt1                                      
+ 
+cmo/setatt/motet/imt pset,get,p2 2                                              
+       387 values reset for attribute imt1                                      
+ 
+cmo/setatt/motet/imt pset,get,p1 1                                              
+       391 values reset for attribute imt1                                      
+ 
+resetpts/itp                                                                    
+geniee                                                                          
+finish                                                                          
+dump gmv tet_materials.gmv motet                                                
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+dump avs tet_materials.inp motet                                                
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+finish                                                                          
+LaGriT successfully completed                                                   

@@ -1,0 +1,297 @@
+ 
+ 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+*               *                                             *                 
+*               *    Program:  LaGriT V3.320   Linux          *                 
+*               *    date_compile: 2019/04/15 Static          *                 
+*               *    Run Time: 2019/May 13  12:33:07          *                 
+*               *    Manual:   http://lagrit.lanl.gov         *                 
+*               *                                             *                 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+ 
+                               -----oOo-----                                    
+             LaGriT V3 LA-CC-15-069  https://github.com/lanl/LaGriT             
+  Copyright 2016. Triad National Security, LLC.  All rights reserved. This      
+  program was produced under U.S. Government contract 89233218CNA000001         
+  for Los Alamos National Laboratory (LANL), which is operated by Triad         
+  National Security, LLC for the U.S. Department of Energy/National Nuclear     
+  Security Administration.  All rights in the program are reserved by Triad     
+  National Security, LLC, and the U.S. Department of Energy/National Nuclear    
+  Security Administration. The Government is granted for itself and others      
+  acting on its behalf a nonexclusive, paid-up, irrevocable worldwide license   
+  in this material to reproduce, prepare derivative works, distribute copies    
+  to the public, perform publicly and display publicly, and to permit others to 
+  do so. This software is open source and available under the BSD-3 License.    
+                               -----oOo-----                                    
+ 
+ 
+Output log file: lagrit.out                                                     
+Command log file: lagrit.log                                                    
+ 
+# extract outside boundary                                                      
+# make sure layer interfaces are also extracted                                 
+read tet_gfm.inp motet                                                          
+read/avs/tet_gfm.inp/motet                                                      
+geniee                                                                          
+finish                                                                          
+cmo/status/brief                                                                
+ 
+The current-mesh-object(CMO) is: motet                                          
+ 
+  1 Mesh Object name: motet                                                     
+    number of nodes =          1110        number of elements =         5031    
+    dimensions geometry =         3        element type =                tet    
+    dimensions topology =         3        4 nodes      4 faces      6 edges    
+    boundary flag =        16000000        status =                   active    
+ 
+ 
+finish                                                                          
+finish                                                                          
+resetpts itp                                                                    
+geniee                                                                          
+finish                                                                          
+# ------------------------------                                                
+# Extract surface with internal boundaries                                      
+cmo select motet                                                                
+extract/surfmesh/1,0,0/motmp/motet                                              
+cmo/addatt/motmp/itetclr0/vint/scalar/nelements////0                            
+finish                                                                          
+cmo/addatt/motmp/itetclr1/vint/scalar/nelements////0                            
+finish                                                                          
+cmo/addatt/motmp/idnode0/vint/scalar/nnodes////0                                
+finish                                                                          
+cmo/addatt/motmp/idelem0/vint/scalar/nelements////0                             
+finish                                                                          
+cmo/addatt/motmp/idelem1/vint/scalar/nelements////0                             
+finish                                                                          
+cmo/addatt/motmp/facecol/vint/scalar/nelements////0                             
+finish                                                                          
+cmo/addatt/motmp/idface0/vint/scalar/nelements////0                             
+finish                                                                          
+cmo/addatt/motmp/idface1/vint/scalar/nelements////0                             
+finish                                                                          
+cmo/addatt/motmp/ncon50/int/scalar/scalar/constant/permanent/x/0                
+finish                                                                          
+cmo/addatt/motmp/nconbnd/int/scalar/scalar/constant/permanent/x/0               
+finish                                                                          
+cmo/addatt/motmp/icontab/vint/scalar/ncon50/constant/permanent/x/0              
+finish                                                                          
+resetpts/itp                                                                    
+geniee                                                                          
+ geniee: mesh has                   120  jtet loops, max cycle length=          
+                                                                               3
+finish                                                                          
+finish                                                                          
+cmo/copyatt/motmp motmp/itetclr/itetclr1                                        
+      1632 copied from motmp itetclr1 to -> motmp itetclr                       
+ 
+cmo select motmp                                                                
+resetpts itp                                                                    
+geniee                                                                          
+ geniee: mesh has                   120  jtet loops, max cycle length=          
+                                                                               3
+finish                                                                          
+dump surf_3Dmesh_4mat.gmv motmp                                                 
+dump/gmv/surf_3Dmesh_4mat.gmv/motmp                                             
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+finish                                                                          
+dump surf_3Dmesh_4mat.inp motmp                                                 
+dump/avs/surf_3Dmesh_4mat.inp/motmp                                             
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+finish                                                                          
+# MUST hextotet the quads on sides of mesh                                      
+# hextotet/2/ CMO_SURF motmp                                                    
+cmo copy motri motmp                                                            
+cmo delete motmp                                                                
+     Released Mesh Object: motmp                                                
+define CMO motri                                                                
+define CMO_SURF motri                                                           
+cmo setatt motri itetclr 1                                                      
+      1632 values reset for attribute itetclr                                   
+ 
+cmo setatt motri imt 1                                                          
+       761 values reset for attribute imt1                                      
+ 
+resetpts itp                                                                    
+geniee                                                                          
+finish                                                                          
+infile check_surface.mlgi                                                       
+#---- CHECK surface --------------####                                          
+cmo select CMO_SURF                                                             
+cmo setatt CMO_SURF itetclr 1                                                   
+      1632 values reset for attribute itetclr                                   
+ 
+cmo setatt CMO_SURF imt 1                                                       
+       761 values reset for attribute imt1                                      
+ 
+resetpts itp                                                                    
+geniee                                                                          
+ geniee: mesh has                   120  jtet loops, max cycle length=          
+                                                                               3
+finish                                                                          
+# CHECK for 0 duplicate points                                                  
+filter 1,0,0                                                                    
+FILTER:Use internal epsilonl value =   0.999999993923E-08                       
+FILTER:Dudding duplicate points:           0                                    
+rmpoint compress                                                                
+         0 points removed and          0 elements removed.                      
+RMPOINT: new point count is          761                                        
+RMPOINT: new element count is       1632                                        
+resetpts itp                                                                    
+geniee                                                                          
+ geniee: mesh has                   120  jtet loops, max cycle length=          
+                                                                               3
+finish                                                                          
+# CHECK all areas are positive                                                  
+quality                                                                         
+ 
+epsilonl, epsilonaspect:   9.9999999E-09  9.9999998E-25                         
+--------------------------------------------                                    
+elements with aspect ratio < .01:                    0                          
+elements with aspect ratio b/w .01 and .02:          0                          
+elements with aspect ratio b/w .02 and .05:          0                          
+elements with aspect ratio b/w .05 and .1 :          0                          
+elements with aspect ratio b/w .1  and .2 :          0                          
+elements with aspect ratio b/w .2  and .5 :          0                          
+elements with aspect ratio b/w .5  and 1. :       1632                          
+min aspect ratio =  0.5670E+00  max aspect ratio =  0.1000E+01                  
+ 
+epsilonvol:   1.0726176E-09                                                     
+---------------------------------------                                         
+element volumes b/w  0.1295E+01 and  0.1526E+01:       213                      
+element volumes b/w  0.1526E+01 and  0.1798E+01:       688                      
+element volumes b/w  0.1798E+01 and  0.2119E+01:       580                      
+element volumes b/w  0.2119E+01 and  0.2498E+01:       105                      
+element volumes b/w  0.2498E+01 and  0.2944E+01:        46                      
+min volume =   1.2945017E+00  max volume =   2.9435372E+00                      
+-----------------------------------------------------------                     
+      1632 total elements evaluated.                                            
+ 
+# CHECK for 0 boundary shell, 1 boundary open surface                           
+#           0  different exterior boundary components                           
+boundary_components                                                             
+log/tty/off                                                                     
+finish                                                                          
+resetpts/itp                                                                    
+geniee                                                                          
+ geniee: mesh has                   120  jtet loops, max cycle length=          
+                                                                               3
+finish                                                                          
+finish                                                                          
+cmo/addatt/motri/numbnd/vint/scalar/nnodes/linear/permanent/afgx/0/             
+finish                                                                          
+cmo/addatt/motri/id_numb/vint/scalar/nnodes/linear/permanent/afgx/0/            
+finish                                                                          
+sort/-def-/index/-def-/ikey_tmp/numbnd                                          
+cmo/addatt/motri/ikey_tmp/vint/scalar/nnodes///gax/0                            
+finish                                                                          
+ SORT: order key written to attribute: ikey_tmp                                 
+ 
+finish                                                                          
+ 
+ CONNECTED COMPONENTS:                                                          
+                    0  different exterior boundary components                   
+ Set#        Representitive Node #        # Nodes in Set                        
+            (numbnd_e(node#) attribute)                                         
+      0           419154320                6184                                 
+ 
+cmo/DELATT/motri/ikey_tmp                                                       
+finish                                                                          
+log/tty/on                                                                      
+finish                                                                          
+# CHECK face orientations are all in outward directions                         
+# visual inspection of materials should result with                             
+# 1=down facing 2=up facing, 3=right, 4=back, 5=left, 6=front                   
+settets/normal                                                                  
+assign_color_normal epsilon for zero:   1.0000000E-15                           
+       768 out of       1632 element colors changed.                            
+ 
+dump gmv ck_normals.gmv CMO_SURF                                                
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+# CHECK topology, should have 0 inconsistent elements                           
+# Note this checks that all are inward or outward in same direction             
+# Note that internal boundaries will result in 3 elems sharing an edge          
+# For instance                                                                  
+#  geniee: mesh has 32  jtet loops, max cycle length=  3                        
+#  means there are  32 edges with more than 2 faces sharing an edge             
+#  and there is no single solution for checking or fixing this                  
+#                                                                               
+#  Reference Element                   1                                        
+#  Inconsistent Elements               0                                        
+# ---NO ACTION, Only Check---                                                   
+#                                                                               
+geniee CMO_SURF 2dnormal 0                                                      
+---TOPOLOGY MODIFY----                                                          
+ Number of Elements Total         1632                                          
+ Number of Elements Tested        1632                                          
+ Reference Element                   1                                          
+---NO ACTION, Only Check---                                                     
+ Inconsistent Elements               0                                          
+---NO ACTION, Only Check---                                                     
+---TOPOLOGY MODIFY----                                                          
+# END SURFACE CHECK                                                             
+finish                                                                          
+dump surf_3Dmesh_normals.gmv motri                                              
+dump/gmv/surf_3Dmesh_normals.gmv/motri                                          
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+finish                                                                          
+dump surf_3Dmesh_normals.inp motri                                              
+dump/avs/surf_3Dmesh_normals.inp/motri                                          
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+finish                                                                          
+# ------------------------------                                                
+# get top to use as DEM                                                         
+cmo select motri                                                                
+eltset/edel/itetclr ne 2                                                        
+ 
+ THE ELTSET edel                             HAS       1416 ELEMENTS            
+rmpoint element eltset,get,edel                                                 
+ Dudded        632 points plus parents, and        1416 elements removed.       
+rmpoint compress                                                                
+       632 points removed and          0 elements removed.                      
+RMPOINT: new point count is          129                                        
+RMPOINT: new element count is        216                                        
+resetpts itp                                                                    
+geniee                                                                          
+finish                                                                          
+quality                                                                         
+ 
+epsilonl, epsilonaspect:   6.8288888E-12  3.1845651E-34                         
+--------------------------------------------                                    
+elements with aspect ratio < .01:                    0                          
+elements with aspect ratio b/w .01 and .02:          0                          
+elements with aspect ratio b/w .02 and .05:          0                          
+elements with aspect ratio b/w .05 and .1 :          0                          
+elements with aspect ratio b/w .1  and .2 :          0                          
+elements with aspect ratio b/w .2  and .5 :          0                          
+elements with aspect ratio b/w .5  and 1. :        216                          
+min aspect ratio =  0.7303E+00  max aspect ratio =  0.1000E+01                  
+ 
+epsilonvol:   1.7763568E-10                                                     
+---------------------------------------                                         
+element volumes b/w  0.1524E+01 and  0.1692E+01:        22                      
+element volumes b/w  0.1692E+01 and  0.1879E+01:       129                      
+element volumes b/w  0.1879E+01 and  0.2086E+01:        51                      
+element volumes b/w  0.2086E+01 and  0.2316E+01:         2                      
+element volumes b/w  0.2316E+01 and  0.2572E+01:        12                      
+min volume =   1.5236119E+00  max volume =   2.5720085E+00                      
+-----------------------------------------------------------                     
+       216 total elements evaluated.                                            
+ 
+dump surf_3Dmesh_top.gmv motri                                                  
+dump/gmv/surf_3Dmesh_top.gmv/motri                                              
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+finish                                                                          
+dump surf_3Dmesh_top.inp motri                                                  
+dump/avs/surf_3Dmesh_top.inp/motri                                              
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+finish                                                                          
+finish                                                                          
+LaGriT successfully completed                                                   

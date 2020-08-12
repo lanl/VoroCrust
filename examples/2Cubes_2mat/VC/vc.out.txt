@@ -1,0 +1,30 @@
+VoroCrust::Input Data:
+           * Input Mesh = ../surf_cube_1bndry.obj
+           * Number of Loop Refinements = 0
+           * Refinement Smooth Angle Threshold = 180
+           * Maximum Sphere Radius = 2
+           * Lipschitz Const = 0.2
+           * VC Smooth Angle Threshold = 85
+           * Input model is NOT watertight or NON manifold!
+VoroCrust::Reading obj file:
+           * Number of Input mesh points = 12
+           * Number of Input mesh faces = 22
+VoroCrust::Generating Surface Seeds:
+           * Number of Sharp Corners = 12
+           * Number of Sharp Edges = 28
+           * Number of Spheres = (12, 20, 160)
+           * No sliver spheres were detected!
+           * Correctness of VoroCrust surface has been verified!
+           * Surface Mesh is saved in surface_mesh.obj!
+           * executed in 1.15543 seconds!
+VoroCrust::Generating Volume Seeds:
+           * Number of interior Volume seeds = 14
+           * Number of exterior Volume seeds = 877
+           * Number of interior Volume seeds = 62
+           * Number of exterior Volume seeds = 1446
+           * Number of ghost Volume seeds = 8676
+           * executed in 2.24063 seconds!
+           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
+
+*** VoroCrust::Mission Accomplished! ***.
+

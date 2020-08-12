@@ -1,10 +1,11 @@
 # LANL VoroCrust for Geologic Applicatons
 
 
-This work continues work with SFWD-GDSA for integration of VoroCrust Meshing with Geologic Modeling Applications.
+This work integrates VoroCrust Meshing with Geologic Modeling Applications such as PFLOTRAN or Amanzi/ATS.
 
 
 **VoroCrust**  Voronoi Meshing Without Clipping is the first provably correct algorithm for conforming Voronoi meshing for non-convex and possibly non-manifold domains with guarantees on the quality of both surface and volume elements. It provides a robust polyhedral meshing that can handle broad classes of domains exhibiting arbitrary curved boundaries and sharp features. In addition, the power of primal-dual mesh pairs, exemplified by Voronoi-Delaunay meshes is recognized as an important ingredient in numerous formulations. 
+
 
 
 * [ VoroCrust Home vorocrust.sandia.gov ](https://vorocrust.sandia.gov/)
@@ -13,92 +14,66 @@ This work continues work with SFWD-GDSA for integration of VoroCrust Meshing wit
 * [ PDF VoroCrust Supplemental Materials ](https://www.dropbox.com/s/6p72h1e2ivw6kj3/VoroCrust_supplemental_materials.pdf)
 
 
-# VoroCrust Instructions for LANL Models 
+
+# VoroCrust Instructions for LANL Models
+
+**Usage:**
+  vc [-h] <method> <input_filename>
+ 
+**Methods:**
+    -vc    : Use the vc method
+    -viz   : Use the viz method
+    -vcomp : Use the vcomp method
+    -vlp   : Solve a Linear Program
+    -covid : Analyze Covid-19 Data
+    -h     : Display help message and exit.
 
 
-Required: parameter file and surface file .obj
+Required Input Files: parameter file and surface file .obj
 
 To run on command line: 
 ```
-vorocrust parameter_file_name
+vorocrust -vc parameters.in
 ```
 
 The parameter_file such as vc.in, has the input parameters for vorocrust. An example:
 
 ```
-INPUT_MESH_FILE = ../surfmesh_gfm.obj
-NUM_LOOP_REF = 0
-REF_ANGLE = 180.0
-R_MAX = 2. 
+INPUT_MESH_FILE = ../surfmesh.obj
+R_MAX = 10000.0
 LIP_CONST = 0.25
-VC_ANGLE = 80.0
+VC_ANGLE = 30.0
+NUM_THREADS = 10
+GENERATE_VCG_FILE
 ```
 
 VoroCrust will report to screen as it runs. Here is a sample portion of what you should see:
 
-*The Min. dihedral angle in this report should be as close as possible to 180 (Values above 150 are usually fine).
-If you see something like 120 when you specify a smoothness threshold angle of 60 degrees that is an indication that 
-a very very fine mesh will be produced in a very long time.*
-
 ```
-VoroCrust::Input Data:
-           * Input Mesh = ../surfmesh_gfm.obj
-           * Number of Loop Refinements = 0
-           * Refinement Smooth Angle Threshold = 180
-           * Maximum Sphere Radius = 2
-           * Lipschitz Const = 0.25
-           * VC Smooth Angle Threshold = 80
-           * Input model is a watertight manifold.
-VoroCrust::Reading obj file:
-           * Min. dihedral angle between smooth neighbors = 180 degrees
-           * Number of Input mesh points = 761
-           * Number of Input mesh faces = 1632
-           * Number of Sharp Corners = 92
-           * Number of Sharp Edges = 274
-VoroCrust::Generating Surface Seeds:
-           * Number of Spheres = (92, 291, 1000)
-           * Number of Spheres = (92, 291, 2000)
 ...
-           * Number of ghost Volume seeds = 71376
-           * executed in 154.842 seconds!
-           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
+VoroCrust::Generating Explicit Voronoi Mesh:
+  * Subregion 1/2
+    -> Number of region seeds = 14900
+  * Subregion 2/2
+    -> Number of region seeds = 10067
+  * executed in 2717.44 seconds!
+VoroCrust::Saving VoroCrust Geomerty (.vcg) file:
+  * Total Volume = 5.1975e+09
 
-*** VoroCrust::Mission Accomplished! ***.
-```
-
-VoroCrust with NON_MANIFOLD will not report the Min. dihedral angle and will look similar to this.
-
-*If you forget to add the NON_MANIFOLD keyword, there is is good chance the mesh will finish and may look reasonable. But using the NON_MANIFOLD keyword will make a better mesh. VoroCrust does not complain if you forget*
-
-```
-VoroCrust::Input Data:
-           * Input Mesh = ../surfmesh_gfm.obj
-           * Number of Loop Refinements = 0
-           * Refinement Smooth Angle Threshold = 180
-           * Maximum Sphere Radius = 2
-           * Lipschitz Const = 0.25
-           * VC Smooth Angle Threshold = 80
-           * Input model is NOT watertight or NON manifold!
-VoroCrust::Reading obj file:
-           * Number of Input mesh points = 761
-           * Number of Input mesh faces = 1632
-...
-           * executed in 102.396 seconds!
-           * Saving Output in Interior_seeds.csv, Exterior_seeds.csv and Volume_seeds.csv
-
-*** VoroCrust::Mission Accomplished! ***.
+*** VoroCrust::Mission Accomplished in 3114.48 seconds! ***
 ```
 
 
 ## VoroCrust Input parameters:
 
 
+See [ VoroCrust ](https://vorocrust.sandia.gov/) for VoroCrust Documentation.
+
 See [ https://arxiv.org/abs/1902.08767 ](https://arxiv.org/abs/1902.08767) for details on VoroCrust parameters.
 
 
 **INPUT_MESH_FILE** = filename.obj triangulated surface in .obj format
 LaGriT can extract a valid 2D surface mesh from a 3D mesh and write .stl format files. Paraview can convert .stl files to .obj with read .stl then under File/Save Data write the .obj file. 
-
 
 
 **R_MAX** = Maximum Sphere Radius is a bound on the sizing function and indicates the desired size of mesh elements. For most cases, set R_MAX to a very large value (e.g. the diagonal of the domain bounding box). Use R_MAX to set element size and enforce a finer mesh (based on physics not geometry). 
@@ -110,62 +85,57 @@ LaGriT can extract a valid 2D surface mesh from a 3D mesh and write .stl format 
 **VC_ANGLE**  = VC Smooth Angle Threshold in degrees usually between 20. and 80 and is discussed in paper. This angle threshold value is used to identify the sharp features and round aproximation errors.
 
 
-
 **REF_ANGLE** = Refinement Smooth Angle Threshold in degrees with max at 180 degrees. 
 This is used when the user decides to use the surface subdivision method as a preprocess. This would make the dihedral angles in the smooth patches go to 180. A value of 180 means that everything is smooth and the loop refinement well smear any sharp that exist.
 This angle needs to be as high as possible to avoid false positives in sharp corner detection. For a stacked layer mesh with boundary poly lines at 50m, use Lip_Const .25 and REF_ANGLE 85, if REF_ANGLE is too small such as 40, the code may produce errors. 
 
 
-
 **NUM_LOOP_REF** = Number of Refine Loops integer is a value 0 or greater. A value greater than 0 indicates the number of loop refinements, usually 6 or less for refinement.
+
+
+**NUM_THREADS** specifies the number of threads that OpenMp uses
+
+ 
+**GENERATE_VCG_FILE** will write a vcg file incuding volume and area information of the generated mesh
 
 
 **NO_SHARP_CORNERS** = optional keyword
 
 
-**NON_MANIFOLD** and/or **NON_WATERTIGHT** = conditional keywords needed if the input mesh is non-manifold or non-watertight. The prescence of either keyword will set water_tight_manifold = false.
-
 
 ## VoroCrust Output Files:
 
+*VoroCrustLog.txt* - VoroCrust Report
 
-*surface_mesh.obj* - Surface Reconstruction of the volumetric mesh.
-
-
-*Exterior_seeds.csv*  *Interior_seeds.csv* - are the Voronoi surface seeds outside and inside the boundary surface. 
-
-
-*Interior_volume_seeds.csv* - these are the seeds used to fill the interior of the mesh domain.
-
-
-*Exterior_volume_seeds.csv* - these seeds are the outer domain used to ensure that the aspect ratio of the generated Voronoi tessellation is consistent with the input value of the Lipschitz continuity constant.
+*Voronoi_Seeds.csv* - x-coordinate, y-coordinate, z-coordinate, sizing function, (3 components for the normal vector for surface seeds: nx, ny, nz), the following 6 number is additional attributes: number of additional attributes + 1,  index of pair seed (for surface seeds), indices of three spheres forming that seed, index of the subregion where that seed belong: (0 means a ghost seed that lie in the exterior of the domain).
 
 
 *corner_spheres.csv*  *edges_spheres.csv* *surface_spheres.csv* - these are spheres at features showing the sphere packing with values x, y, z, and radius.
 
 
-*corner_point_cloud.csv*  *edge_point_cloud.csv*  *surface_point_cloud.csv* - are used to speed up functions, can be ignored.
+*mesh.vcg* - voronoi CELL centers, volumes, and region ID followed by CONNECTIONS Cell_ID1, Cell_ID2, x_face, y_face, z_face,   face_area,  x_norm, y_norm,  z_norm.
 
-
-*Ghost_volume_seeds.csv* - is a set of seeds mirroring the point set outside the bounding box in 6 directions. It is used to demonstrate that VoroCrust can handle domains with multiple materials and can be ignored.
-
-
-
+Where *_face are coordinates on the line between the two cell centers where that line intersects the plane of the face. 
+This is the not the center of the face, and may not even be on the face in some cases. (See the attached schematic)
+*_norm are the components of the outward normal vector
+ 
+The boundary nodes are also in the connections section.  They are flagged as connections with themselves.
+For example:
+4 4 0.1946231082256368 1 0.6037498441995969 0.000169276174283866 0 1 0
+Cell 4 is a boundary. 
+The normal from the center intersects the exterior face is (0.19, 1.0, 0.60),
+face area is 1.7e-4 and the normal (0,1,0) is outward in the y direction.
+ 
 
 ## VIS of VoroCrust output:
 
-Voro++
+*surface_mesh.obj* - Surface Reconstruction of the volumetric mesh
 
-Contact Ahmed Mahmoud ahmahmoud@ucdavis.edu
+*Vmesh_001.ply, Vmesh_002.ply*, for each region - these are the polygon faces of the mesh cells viewable with Paraview
 
-PhD student at ECE, UCDavis
+*mesh.exo* - not implemented yet, this is the polyhedral mesh viewable with Paraview
 
-
-http://math.lbl.gov/voro++/
-
-
-To generate the explicit mesh (for a manifold model) you need to combine all interior and exterior seeds into one file, pass it to Voro++ and generate the cells associated with the interior seeds.
-For non-manifold models (the definition of interior and exterior is now ambiguous and you need to mark each seed according to the region it belongs to).
+*clean.obj* - is the input surface with duplicate nodes removed and possible issues fixed.
 
 
 ## Definitions
@@ -258,7 +228,7 @@ Each face is colored in one of 6 directions with all facing outward
 With top facing up, bottom facing down, etc including right, back, left, front.
 
 
-## Output expected from Vorocrust, may be under development
+## Information Needed for Model Simulations
 
 1. Sparse matrix graph is edge graph of the Delaunay dual of the Voronoi tessellation. It is the connectivity graph of the Voronoi tessellation describing how the faces of the volumes are connected.
 2. Volume of each Voronoi cell - to fill the Diagonal entries of the sparse matrix

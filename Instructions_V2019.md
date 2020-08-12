@@ -1,19 +1,19 @@
-# LANL VoroCrust for Geologic Applicatons
+# LANL VoroCrust for Geologic Applicatons (2019)
 
 
-This work continues work with SFWD-GDSA for integration of VoroCrust Meshing with Geologic Modeling Applications.
+This work is part of the SFWD-GDSA Geologic Model Integration project in colloboration with Sandia Labs. 
+
+The Spent Fuel and Waste Science and Technology (SFWST) Campaign of the U.S. Department of Energy (DOE) Office of Nuclear Energy (NE) is tasked with conducting research and development (R&D) related to the geological disposal of spent nuclear fuel (SNF) and high level nuclear waste (HLW). Two high priority topics for SFWST R&D are to create design concepts and numerical modeling approaches for disposal systems.
+A part of the Geologic Disposal Safety Analysis (GDSA) is Geology Integration which includes: 3D Geologic Framework Software, an UZ Reference case for Alluvial Basin (LANL and SNL), and a Shale Reference Case (SNL). The use of VoroCrust is being explored for Voronoi polyhedral meshing to automate and make more efficient part of the model setup workflow as well as increase the accuracy of the flow and transport simulations.
 
 
-**VoroCrust**  Voronoi Meshing Without Clipping is the first provably correct algorithm for conforming Voronoi meshing for non-convex and possibly non-manifold domains with guarantees on the quality of both surface and volume elements. It provides a robust polyhedral meshing that can handle broad classes of domains exhibiting arbitrary curved boundaries and sharp features. In addition, the power of primal-dual mesh pairs, exemplified by Voronoi-Delaunay meshes is recognized as an important ingredient in numerous formulations. 
+[Project Pages](https://meshing.lanl.gov/proj/SFWD_models/main.html)
 
 
-* [ VoroCrust Home vorocrust.sandia.gov ](https://vorocrust.sandia.gov/)
-* [ Abstract ](https://arxiv.org/abs/1902.08767)
-* [ PDF VoroCrust: Voronoi Meshing Without Clipping ](https://www.dropbox.com/s/qc6sot1gaujundy/VoroCrust.pdf)
-* [ PDF VoroCrust Supplemental Materials ](https://www.dropbox.com/s/6p72h1e2ivw6kj3/VoroCrust_supplemental_materials.pdf)
+## VoroCrust Instructions for LANL Models (2019 Vorocrust)
 
-
-# VoroCrust Instructions for LANL Models 
+An early pre-release version of VoroCrust was used to test and develop methods.
+The following are instructions used.
 
 
 Required: parameter file and surface file .obj

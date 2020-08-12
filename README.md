@@ -15,7 +15,7 @@ This work integrates VoroCrust Meshing with our Geologic Modeling Applications.
 
 
 
-# VoroCrust Instructions for LANL Models
+# VoroCrust Instructions for LANL Models (1999 Vorocrust)
 
 
 Required: parameter file and surface file .obj
@@ -260,11 +260,13 @@ Each face is colored in one of 6 directions with all facing outward
 With top facing up, bottom facing down, etc including right, back, left, front.
 
 
-## Under Development
+## Output expected from Vorocrust, may be under development
 
 1. Sparse matrix graph is edge graph of the Delaunay dual of the Voronoi tessellation. It is the connectivity graph of the Voronoi tessellation describing how the faces of the volumes are connected.
 2. Volume of each Voronoi cell - to fill the Diagonal entries of the sparse matrix
 3. Areas of each Voronoi cell face - to fill the off diagonal entries of the sparse matrix where area_ij = area_ji so only half of the matrix is written.
 4. Material id for each cell if multi-material.
 5. List or defined regions to represent faces for flow or no-flow boundaries of the mesh.
-6. VIS and statistics files to check and docum
+6. Exodus Polyhedral Mesh format
+7. Statistics and VIS files to check and document
+

@@ -77,6 +77,8 @@ LaGriT can extract a valid 2D surface mesh from a 3D mesh and write .stl format 
 
 
 **R_MAX** = Maximum Sphere Radius is a bound on the sizing function and indicates the desired size of mesh elements. For most cases, set R_MAX to a very large value (e.g. the diagonal of the domain bounding box). Use R_MAX to set element size and enforce a finer mesh (based on physics not geometry). 
+VoroCrust performs additional iterations to avoid having surface seeds.
+Play with smaller R_MAX to have better results along boundary edges.
 
 
 **LIP_CONST** = Lipschitz constant between 0 and 1, most cases will do well with a value of .25. Value 0 will force the sampling to be uniform, the smallest feature size will be applied everywhere (which may result in too many points). Value 1. will produce fewer points but is computationally more expensive and may not have a solution.

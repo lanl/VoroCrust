@@ -21,12 +21,12 @@ This work integrates VoroCrust Meshing with Geologic Modeling Applications such 
   vc [-h] <method> <input_filename>
  
 **Methods:**
-    -vc    : Use the vc method
-    -viz   : Use the viz method
-    -vcomp : Use the vcomp method
-    -vlp   : Solve a Linear Program
-    -covid : Analyze Covid-19 Data
-    -h     : Display help message and exit.
+* -vc    : Use the vc method
+* -viz   : Use the viz method
+* -vcomp : Use the vcomp method
+* -vlp   : Solve a Linear Program
+* -covid : Analyze Covid-19 Data
+* -h     : Display help message and exit.
 
 
 Required Input Files: parameter file and surface file .obj
@@ -107,15 +107,15 @@ This angle needs to be as high as possible to avoid false positives in sharp cor
 
 ## VoroCrust Output Files:
 
-*VoroCrustLog.txt* - VoroCrust Report
+***VoroCrustLog.txt*** - VoroCrust Report
 
-*Voronoi_Seeds.csv* - x-coordinate, y-coordinate, z-coordinate, sizing function, (3 components for the normal vector for surface seeds: nx, ny, nz), the following 6 number is additional attributes: number of additional attributes + 1,  index of pair seed (for surface seeds), indices of three spheres forming that seed, index of the subregion where that seed belong: (0 means a ghost seed that lie in the exterior of the domain).
-
-
-*corner_spheres.csv*  *edges_spheres.csv* *surface_spheres.csv* - these are spheres at features showing the sphere packing with values x, y, z, and radius.
+***Voronoi_Seeds.cs*** - x-coordinate, y-coordinate, z-coordinate, sizing function, (3 components for the normal vector for surface seeds: nx, ny, nz), the following 6 number is additional attributes: number of additional attributes + 1,  index of pair seed (for surface seeds), indices of three spheres forming that seed, index of the subregion where that seed belong: (0 means a ghost seed that lie in the exterior of the domain).
 
 
-*mesh.vcg* - voronoi CELL centers, volumes, and region ID followed by CONNECTIONS Cell_ID1, Cell_ID2, x_face, y_face, z_face,   face_area,  x_norm, y_norm,  z_norm.
+***corner_spheres.csv***  ***edges_spheres.csv*** ***surface_spheres.csv*** - these are spheres at features showing the sphere packing with values x, y, z, and radius.
+
+
+***mesh.vcg*** - voronoi CELL centers, volumes, and region ID followed by CONNECTIONS Cell_ID1, Cell_ID2, x_face, y_face, z_face,   face_area,  x_norm, y_norm,  z_norm.
 
 Where *_face are coordinates on the line between the two cell centers where that line intersects the plane of the face. 
 This is the not the center of the face, and may not even be on the face in some cases. (See the attached schematic)
@@ -131,13 +131,13 @@ face area is 1.7e-4 and the normal (0,1,0) is outward in the y direction.
 
 ## VIS of VoroCrust output:
 
-*surface_mesh.obj* - Surface Reconstruction of the volumetric mesh
+***surface_mesh.obj*** - Surface Reconstruction of the volumetric mesh
 
-*Vmesh_001.ply, Vmesh_002.ply*, for each region - these are the polygon faces of the mesh cells viewable with Paraview
+***Vmesh_001.ply, Vmesh_002.ply***, for each region - these are the polygon faces of the mesh cells viewable with Paraview
 
-*mesh.exo* - not implemented yet, this is the polyhedral mesh viewable with Paraview
+***mesh.exo*** - not implemented yet, this is the polyhedral mesh viewable with Paraview
 
-*clean.obj* - is the input surface with duplicate nodes removed and possible issues fixed.
+***clean.obj*** - is the input surface with duplicate nodes removed and possible issues fixed.
 
 
 ## Definitions

@@ -1,4 +1,6 @@
-# LANL Examples for Geologic Applications
+# LANL Examples for Geologic Applications (2019 beta version of VoroCrust)
+
+*Need to re-run some examples with new release version of VoroCrust*
 
 
 ## 2Cubes_2mat 

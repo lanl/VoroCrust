@@ -1,0 +1,19 @@
+# read cell centers and find points within box
+cmo create mo                                                                   
+cmo readatt mo/imt xic yic zic/1,0,0/cell_xyz.dat                               
+cmo printatt mo -xyz- minmax                                                    
+cmo printatt mo -all- minmax                                                    
+pset/pbox/geom/xyz/1,0,0/2950. 200. 179./3050. 290. 221.                        
+cmo printatt mo imt pset,get,pbox                                               
+
+# write so paraview can display points
+cmo/setatt/mo imt 1
+cmo/setatt/mo imt pset,get,pbox/2
+dump/avs/cell_pts_ucd.inp/ mo / 1 3 1 1
+
+pset/pdel/not pbox
+rmpoint/pset,get,pdel
+rmpoint compress
+dump/avs/cell_pts_box_ucd.inp/ mo / 1 3 1 1
+
+finish                                                                          

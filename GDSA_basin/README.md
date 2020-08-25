@@ -13,36 +13,36 @@ Vers    Parameters         Cells   Min  Volume	Max Volume
 
 V01_R10000_L25
 
-<width="400" src="vc_V01_R10000_L25_clip.png"> 
+<width="500" src="images/vc_V01_R10000_L25_clip.png"> 
 
 
 V02_R50_L25
 
-<img width="400" src="vc_V02_R50_L25_clip.png"> 
+<img width="500" src="images/vc_V02_R50_L25_clip.png"> 
 
 
 V03_R100_L25 (PFLOTRAN Simulations)
 
-<img width="400" src="vc_V03_R100_L25_clip.png"> 
+<img width="500" src="images/vc_V03_R100_L25_clip.png"> 
 
 
 V04_R50_L15
 
-<img width="400" src="vc_V04_R50_L15_clip.png"> 
+<img width="500" src="images/vc_V04_R50_L15_clip.png"> 
 
 
 V05_R60_L15
 
-<img width="400" src="vc_V05_R60_L15_clip.png"> 
+<img width="500" src="images/vc_V05_R60_L15_clip.png"> 
 
 
 V06_R60_L25
 
-<img width="400" src="vc_V06_R60_L25_clip.png">
+<img width="500" src="images/vc_V06_R60_L25_clip.png">
 
 
 V07_R25_L15
 
-<img width="400" src="vc_V07_R25_L15_clip.png"> 
+<img width="500" src="images/vc_V07_R25_L15_clip.png"> 
 
 

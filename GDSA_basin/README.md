@@ -13,15 +13,16 @@ GENERATE_VCG_FILE
 ```
 
 Versions to create more uniform and smaller volumes for PFLOTRAN simulations.
-```
-Vers        Parameters     Cells    Min Volume	  Max Volume
-LaGrit Tet  50x20	         103950   6250	        50000
-1	R=10000   LIP=.25        15751    1872	        3610362
-2	R=50      LIP=.25        76000    180	          1203425
-3	R=100     LIP=.25        24967    1408	        2486226
-4	R=50      LIP=.15        108134   153	          760714
-7	R=25      LIP=.15        318343   22	          269455
-```
+
+| Vers | Parameters  |  Cells | Min Volume  | Max Volume |
+| :--- | :---        | ---:   | ---:        | ---:  |
+| 0     | Tet     50x20	    | 103950  | 6250	   |     50000 |
+| 1	   |  R=10000 LIP=.25   |  15751   | 1872    |      3610362 |
+| 2	   |  R=50    LIP=.25   |  76000   | 180	   |       1203425 |
+| 3	   |  R=100   LIP=.25   |  24967   | 1408    |      2486226 |
+| 4	  |   R=50    LIP=.15  |   108134  | 153      |     760714 |
+| 7    |  R=25    LIP=.15  |   318343  | 22      |      269455 |
+
 
 
 V01_R10000_L25

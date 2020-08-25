@@ -1,7 +1,7 @@
 # GDSA Basin Example from JewelSuite 2020
 
-
-This version V03 has volumes that are too large and not uniform, resulting in too much dispersion as compared to the LaGriT uniform tet mesh.
+The goal is to create a VoroCrust mesh with volumes and distribution more similar to the LaGriT Tet mesh used for simulations.
+The V03 was used and has volumes that are too large and not uniform, resulting in too much dispersion as compared to simulations run on the LaGriT mesh.
 
 VoroCrust vc.in for V03 used in PFLOTRAN Simulations for Report.
 ```
@@ -12,7 +12,7 @@ VC_ANGLE = 60.0
 GENERATE_VCG_FILE 
 ```
 
-Versions to create more uniform and smaller volumes for PFLOTRAN simulations.
+Versions attempted so far.
 
 | Vers | Parameters  |  Cells | Min Volume  | Max Volume |
 | :--- | :---        | ---:   | ---:        | ---:  |
@@ -26,37 +26,30 @@ Versions to create more uniform and smaller volumes for PFLOTRAN simulations.
 
 
 V01_R10000_L25
-
 <img width="500" src="images/vc_V01_R10000_L25_clip.png"> 
 
 
 V02_R50_L25
-
 <img width="500" src="images/vc_V02_R50_L25_clip.png"> 
 
 
 V03_R100_L25 (PFLOTRAN Simulations)
-
 <img width="500" src="images/vc_V03_R100_L25_clip.png"> 
 
 
 V04_R50_L15
-
 <img width="500" src="images/vc_V04_R50_L15_clip.png"> 
 
 
 V05_R60_L15
-
 <img width="500" src="images/vc_V05_R60_L15_clip.png"> 
 
 
 V06_R60_L25
-
 <img width="500" src="images/vc_V06_R60_L25_clip.png">
 
 
 V07_R25_L15
-
 <img width="500" src="images/vc_V07_R25_L15_clip.png"> 
 
 

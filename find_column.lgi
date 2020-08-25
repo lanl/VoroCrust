@@ -1,0 +1,60 @@
+#
+read avs tet_vc_centers.inp movol
+#
+define / XWELL1 / 3000.
+define / YWELL1 / 200.
+#
+define / RADIUS_WELL / .5
+define / NRADIUS / 2
+define / NZ 20
+
+define / Z0 / -1000.
+define / Z1 /  5000.
+
+#
+cmo / create / mo_well1 / / / tet
+createpts / rtz / &
+         NRADIUS 9 NZ / 0. 0. Z0 / RADIUS_WELL 360. Z1 / 1 1 1
+filter / 1 0 0
+rmpoint / compress
+cmo / setatt / mo_well1 / imt / 1 0 0 / 1
+connect
+resetpts / itp
+cmo / printatt / mo_well1 / -xyz- / minmax
+trans / 1 0 0 / 0. 0. 0. / XWELL1 YWELL1 0.0
+cmo / printatt / mo_well1 / -xyz- / minmax
+# dump / avs / tmp_column.inp / mo_well1
+
+# find intersecting cells
+
+
+cmo / select / movol
+intersect_elements / movol / mo_well1 / if_inter
+eltset / ecol / if_inter / gt / 0
+
+cmo setatt movol itetclr eltset,get,ecol 3
+# dump avs tet_clr_column.inp movol
+
+cmo/copy/motmp/movol
+cmo/select/motmp
+eltset/edel/ itetclr lt 3
+rmpoint element eltset,get,edel
+rmpoint compress
+resetpts itp
+dump avs tet_column.inp motmp
+cmo printatt motmp -xyz- minmax
+cmo printatt motmp vol minmax
+
+finish
+
+#
+compute / distance_field / movol / mo_pts / dfield_well
+#
+cmo / select / movol
+pset / pwell / attribute / dfield_well / 1 0 0 / le / 1.0
+pset / pwell / zone / zone_radius_01.0.zone
+
+#
+finish
+
+

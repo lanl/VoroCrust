@@ -1,0 +1,64 @@
+# Read Voronoi center pts and volumes from mesh.vcg
+# connect into tets with vorocrust vols on vertices
+# clip at 200, get edge lengths, extract column
+# remove outside tets before reporting quality
+# so comparisons can be made with meshes for simulations
+
+read avs cell_pts_vol_ucd.inp mopts
+
+cmo create motet                                                                
+cmo/addatt/motet/vol /VDOUBLE/scalar/nnodes/linear/permanent/
+copypts motet mopts                                                                
+cmo select motet                                                                
+connect                                                                         
+cmo/setatt/motet/itetclr 1
+resetpts itp
+cmo printatt mopts -all- minmax                                                    
+interpolate/voronoi/motet vol/1,0,0/mopts vol
+cmo/delete/mopts
+cmo/select/motet
+
+quality
+quality edge_max y
+quality edge_min y
+quality edge_ratio y
+dump avs tet_vc_quality.inp motet
+
+# remove the removal part
+# there are holes and large tets, not working
+# remove large tets outside mesh
+# read avs surfmesh_input.inp mosurf
+# cmo/select/motet
+# surface/surf_bndry/intrface/sheet/mosurf
+# region/ rout / ge surf_bndry
+# eltset/ eout / region / rout
+# cmo/setatt/motet/itetclr/eltset,get,eout/2
+#
+# remove outside tets which formed during connect
+# pset/pts_out/attribute itp/1,0,0/ ge 10
+# eltset/epts_out/ inclusive pset,get,pts_out
+# eltset/edel/ union epts_out eout
+# remove outside tets
+# rmpoint element eltset,get,edel
+# rmpoint compress
+# resetpts itp
+# cmo/printatt/motet/ vol minmax
+# quality
+# quality edge_max y
+# quality edge_min y
+# quality edge_ratio y
+# dump avs tet_vc_rmbndry.inp motet
+# cmo/printatt/motet/ vol minmax
+# quality
+
+
+# clip in half for easier viewing
+# along Y where simulations are viewed
+pset/pdel/attribute yic/1,0,0/ lt 200.
+rmpoint pset,get,pdel
+rmpoint compress
+resetpts itp
+
+dump avs tet_vc_clip200.inp motet
+
+finish                                                                          

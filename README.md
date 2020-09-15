@@ -14,6 +14,11 @@ This work integrates VoroCrust Meshing with Geologic Modeling Applications such 
 * [ PDF VoroCrust Supplemental Materials ](https://www.dropbox.com/s/6p72h1e2ivw6kj3/VoroCrust_supplemental_materials.pdf)
 
 
+Related Work:
+
+* [Exodus Polyhedra Example Repo](https://github.com/daniellivingston/exodus-polyhedra)
+
+
 
 # VoroCrust Instructions for LANL Models
 
